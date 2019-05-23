@@ -11,6 +11,10 @@ import android.support.design.widget.NavigationView
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.Menu
+import android.view.View
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
+import android.widget.Spinner
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -35,6 +39,26 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         toggle.syncState()
 
         navView.setNavigationItemSelectedListener(this)
+
+        ///
+        val chosenRaceSpinner: Spinner = findViewById(R.id.chosenRace)
+        ArrayAdapter.createFromResource(this, R.array.races_array, android.R.layout.simple_spinner_item).
+                also { adapter -> adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                chosenRaceSpinner.adapter = adapter}
+
+        val subraceSpinner: Spinner = findViewById(R.id.chosen_subrace)
+        val elfAdapter: ArrayAdapter<CharSequence> = ArrayAdapter.createFromResource(this, getElfSubraces(), )
+
+
+        chosenRaceSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
+
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                getSubraces(chosenRaceSpinner)
+            }
+        }
     }
 
     override fun onBackPressed() {
@@ -88,4 +112,26 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         drawerLayout.closeDrawer(GravityCompat.START)
         return true
     }
+
+    private fun getSubraces(chosenRace: Spinner): ArrayList<String>{
+        var result: ArrayList<String> = arrayListOf()
+        when (chosenRace.selectedItem.toString()){
+            "Elf" -> {
+                result = getElfSubraces()
+            }
+            "Dwarf" -> {
+                result = getDwarfSubraces()
+            }
+        }
+        return result
+    }
+
+    private fun getElfSubraces(): ArrayList<String> {
+        return arrayListOf("High Elf", "Wood Elf", "Drow", "Eladrin")
+    }
+
+    private fun getDwarfSubraces(): ArrayList<String> {
+        return arrayListOf("Mountain Dwarf", "Hill Dwarf", "Duergar")
+    }
 }
+

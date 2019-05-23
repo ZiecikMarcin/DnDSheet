@@ -13,4 +13,25 @@
     <string name="menu_tools">Tools</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
+    <string name="character_name">Character name</string>
+    <string name="character_race">Character race</string>
+    <string name="character_subrace">Character subrace</string>
+
+    <string-array name="races_array">
+        <item>Elf</item>
+        <item>Human</item>
+        <item>Dwarf</item>
+        <item>Tiefling</item>
+        <item>Aasimar</item>
+        <item>Gith</item>
+        <item>Tortle</item>
+        <item>Dragonborn</item>
+    </string-array>
+
+    <string-array name="subraces_elf">
+        <item>Wood Elf</item>
+        <item>High Elf</item>
+        <item>Drow</item>
+        <item>Eladrin</item>
+    </string-array>
 </resources>
