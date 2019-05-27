@@ -1,5 +1,6 @@
 package com.example.dndsheet
 
+import android.content.DialogInterface
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
 import android.support.design.widget.Snackbar
@@ -8,16 +9,20 @@ import android.support.v7.app.ActionBarDrawerToggle
 import android.view.MenuItem
 import android.support.v4.widget.DrawerLayout
 import android.support.design.widget.NavigationView
+import android.support.v7.app.AlertDialog
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
+import android.widget.ImageButton
 import android.widget.Spinner
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
+    lateinit var chosenRace: String
+    lateinit var chosenSubrace: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,16 +44,18 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         toggle.syncState()
 
         navView.setNavigationItemSelectedListener(this)
-
-        ///
         val chosenRaceSpinner: Spinner = findViewById(R.id.chosenRace)
+        ///
         ArrayAdapter.createFromResource(this, R.array.races_array, android.R.layout.simple_spinner_item).
                 also { adapter -> adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
                 chosenRaceSpinner.adapter = adapter}
 
-        val subraceSpinner: Spinner = findViewById(R.id.chosen_subrace)
-        val elfAdapter: ArrayAdapter<CharSequence> = ArrayAdapter.createFromResource(this, getElfSubraces(), )
 
+        val subraceSpinner: Spinner = findViewById(R.id.chosen_subrace)
+        val elfAdapter: ArrayAdapter<CharSequence> = ArrayAdapter.createFromResource(this, R.array.subraces_elf, android.R.layout.simple_spinner_item )
+        val dwarfAdapter: ArrayAdapter<CharSequence> = ArrayAdapter.createFromResource(this, R.array.subraces_dwarf, android.R.layout.simple_spinner_item )
+
+        setupButtons()
 
         chosenRaceSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onNothingSelected(parent: AdapterView<*>?) {
@@ -56,9 +63,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             }
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                getSubraces(chosenRaceSpinner)
+                when (chosenRaceSpinner.selectedItem.toString()){
+                    "Elf" ->  subraceSpinner.adapter = elfAdapter
+                    "Dwarf" -> subraceSpinner.adapter = dwarfAdapter
+                }
+                chosenRace = chosenRaceSpinner.selectedItem.toString()
             }
         }
+        val text = chosenRaceSpinner.selectedItem.toString()
     }
 
     override fun onBackPressed() {
@@ -113,25 +125,32 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return true
     }
 
-    private fun getSubraces(chosenRace: Spinner): ArrayList<String>{
-        var result: ArrayList<String> = arrayListOf()
-        when (chosenRace.selectedItem.toString()){
-            "Elf" -> {
-                result = getElfSubraces()
-            }
-            "Dwarf" -> {
-                result = getDwarfSubraces()
-            }
+    fun setupButtons(){
+        val raceInfoButton: ImageButton = findViewById(R.id.race_description_imageButton)
+        val subraceInfoButton: ImageButton = findViewById(R.id.subrace_description_imageButton)
+        raceInfoButton.setOnClickListener{
+            raceDescritpion()
         }
-        return result
     }
 
-    private fun getElfSubraces(): ArrayList<String> {
-        return arrayListOf("High Elf", "Wood Elf", "Drow", "Eladrin")
+    fun raceDescritpion(){
+        val builder = AlertDialog.Builder(this)
+
+        with(builder)
+        {
+            setTitle("Race description")
+            setMessage(getChosenRace())
+            setNeutralButton("OK"){_, _ ->  }
+            show()
+        }
     }
 
-    private fun getDwarfSubraces(): ArrayList<String> {
-        return arrayListOf("Mountain Dwarf", "Hill Dwarf", "Duergar")
+    fun getChosenRace(): Int{
+        return when (chosenRace){
+            "Elf" -> R.string.elf
+            else -> R.string.wood_elf
+        }
+
     }
 }
 

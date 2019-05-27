@@ -16,6 +16,8 @@
     <string name="character_name">Character name</string>
     <string name="character_race">Character race</string>
     <string name="character_subrace">Character subrace</string>
+    <string name="character_background">Character background</string>
+    <string name="race_benefits">Race benefits</string>
 
     <string-array name="races_array">
         <item>Elf</item>
@@ -33,5 +35,11 @@
         <item>High Elf</item>
         <item>Drow</item>
         <item>Eladrin</item>
+    </string-array>
+
+    <string-array name="subraces_dwarf">
+        <item>Hill Dwarf</item>
+        <item>Mountain Dwarf</item>
+        <item>Duergar</item>
     </string-array>
 </resources>
