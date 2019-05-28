@@ -18,7 +18,7 @@ import android.widget.ArrayAdapter
 import android.widget.ImageButton
 import android.widget.Spinner
 
-class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class NewCharacterActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     lateinit var chosenRace: String
     lateinit var chosenSubrace: String
