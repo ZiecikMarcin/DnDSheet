@@ -1,6 +1,5 @@
 package com.example.dndsheet
 
-import android.content.DialogInterface
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
 import android.support.design.widget.Snackbar
@@ -23,6 +22,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     lateinit var chosenRace: String
     lateinit var chosenSubrace: String
+    lateinit var chosenBackground: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,33 +44,57 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         toggle.syncState()
 
         navView.setNavigationItemSelectedListener(this)
-        val chosenRaceSpinner: Spinner = findViewById(R.id.chosenRace)
-        ///
+
+        ////
+
+
+        val raceSpinner: Spinner = findViewById(R.id.chosen_race)
         ArrayAdapter.createFromResource(this, R.array.races_array, android.R.layout.simple_spinner_item).
                 also { adapter -> adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-                chosenRaceSpinner.adapter = adapter}
-
+                raceSpinner.adapter = adapter}
 
         val subraceSpinner: Spinner = findViewById(R.id.chosen_subrace)
+        val backgroundSpinner: Spinner = findViewById(R.id.chosen_background)
+        ArrayAdapter.createFromResource(this, R.array.character_backgrounds, android.R.layout.simple_spinner_item).
+                also { adapter -> adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+                backgroundSpinner.adapter = adapter}
         val elfAdapter: ArrayAdapter<CharSequence> = ArrayAdapter.createFromResource(this, R.array.subraces_elf, android.R.layout.simple_spinner_item )
         val dwarfAdapter: ArrayAdapter<CharSequence> = ArrayAdapter.createFromResource(this, R.array.subraces_dwarf, android.R.layout.simple_spinner_item )
 
         setupButtons()
 
-        chosenRaceSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
+        raceSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener{
             override fun onNothingSelected(parent: AdapterView<*>?) {
 
             }
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                when (chosenRaceSpinner.selectedItem.toString()){
+                when (raceSpinner.selectedItem.toString()){
                     "Elf" ->  subraceSpinner.adapter = elfAdapter
                     "Dwarf" -> subraceSpinner.adapter = dwarfAdapter
                 }
-                chosenRace = chosenRaceSpinner.selectedItem.toString()
+                chosenRace = raceSpinner.selectedItem.toString()
             }
         }
-        val text = chosenRaceSpinner.selectedItem.toString()
+
+        subraceSpinner.onItemSelectedListener = object  : AdapterView.OnItemSelectedListener{
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+            }
+
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                chosenSubrace = subraceSpinner.selectedItem.toString()
+            }
+        }
+
+        backgroundSpinner.onItemSelectedListener = object  : AdapterView.OnItemSelectedListener{
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+            }
+
+            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                chosenBackground = backgroundSpinner.selectedItem.toString()
+            }
+        }
+
     }
 
     override fun onBackPressed() {
@@ -125,15 +149,22 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         return true
     }
 
-    fun setupButtons(){
+    private fun setupButtons(){
         val raceInfoButton: ImageButton = findViewById(R.id.race_description_imageButton)
         val subraceInfoButton: ImageButton = findViewById(R.id.subrace_description_imageButton)
+        val backgroundInfoButton: ImageButton = findViewById(R.id.background_description_imageButton)
         raceInfoButton.setOnClickListener{
-            raceDescritpion()
+            raceDescription()
+        }
+        subraceInfoButton.setOnClickListener{
+            subraceDescription()
+        }
+        backgroundInfoButton.setOnClickListener{
+            backgroundDescription()
         }
     }
 
-    fun raceDescritpion(){
+    private fun raceDescription(){
         val builder = AlertDialog.Builder(this)
 
         with(builder)
@@ -145,12 +176,52 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
     }
 
-    fun getChosenRace(): Int{
+    private fun subraceDescription(){
+        val builder = AlertDialog.Builder(this)
+
+        with(builder)
+        {
+            setTitle("Subrace description")
+            setMessage(getChosenSubrace())
+            setNeutralButton("OK"){_, _ ->  }
+            show()
+        }
+    }
+
+    private fun backgroundDescription(){
+        val builder = AlertDialog.Builder(this)
+
+        with(builder)
+        {
+            setTitle("Background description")
+            setMessage(getChosenBackground())
+            setNeutralButton("OK"){_, _ ->  }
+            show()
+        }
+    }
+
+    private fun getChosenRace(): Int{
         return when (chosenRace){
             "Elf" -> R.string.elf
-            else -> R.string.wood_elf
+            "Dwarf" -> R.string.dwarf
+            else -> 0
         }
+    }
 
+    private fun getChosenSubrace(): Int{
+        return when (chosenSubrace){
+            "Wood Elf" -> R.string.wood_elf
+            "Hill Dwarf" -> R.string.hill_dwarf
+            else -> 0
+        }
+    }
+
+    private fun getChosenBackground(): Int{
+        return when (chosenBackground){
+            "Acolyte" -> R.string.acolyte_bg
+            "Criminal" -> R.string.criminal_bg
+            else -> 0
+        }
     }
 }
 

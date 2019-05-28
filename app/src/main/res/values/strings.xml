@@ -14,10 +14,28 @@
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
     <string name="character_name">Character name</string>
-    <string name="character_race">Character race</string>
-    <string name="character_subrace">Character subrace</string>
-    <string name="character_background">Character background</string>
+    <string name="character_race">CHARACTER RACE</string>
+    <string name="character_subrace">CHARACTER SUBRACE</string>
+    <string name="character_background">CHARACTER BACKGROUND</string>
     <string name="race_benefits">Race benefits</string>
+    <string name="character_class">CLASS</string>
+
+    <string-array name="class_array">
+        <item>Artificer(UA)</item>
+        <item>Artificer(Homebrew)</item>
+        <item>Barbarian</item>
+        <item>Bard</item>
+        <item>Cleric</item>
+        <item>Druid</item>
+        <item>Fighter</item>
+        <item>Monk</item>
+        <item>Paladin</item>
+        <item>Ranger</item>
+        <item>Rogue</item>
+        <item>Sorcerer</item>
+        <item>Warlock</item>
+        <item>Wizard</item>
+    </string-array>
 
     <string-array name="races_array">
         <item>Elf</item>
@@ -42,4 +60,12 @@
         <item>Mountain Dwarf</item>
         <item>Duergar</item>
     </string-array>
+
+    <string-array name="character_backgrounds">
+        <item>Acolyte</item>
+        <item>Criminal</item>
+    </string-array>
+    <string name="title_activity_classes_">Classes_Activity</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
 </resources>

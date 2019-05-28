@@ -2,7 +2,7 @@
 <!--Elf-->
 <resources>
     <string name="elf">
-        <b>ASI:</b> +2 DEX
+        <b>ASI:</b> +2 Dexterity
         \n<b>Size:</b> Medium
         \n<b>Speed:</b> 30 ft
         \n<b>Darkvision:</b> You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can not discern color in darkness, only shades of gray.
@@ -16,5 +16,22 @@
         \n<b>Elf Weapon Training:</b> You have proficiency with the longsword, shortsword, shortbow, and longbow.
         \n<b>Fleet of Foot:</b> Your base walking speed increases to 35 feet.
         \n<b>Mask of the Wild:</b> You can attempt to hide even when you are only lightly obscured by foliage, heavy rain, falling snow, mist, and other natural phenomena.
+    </string>
+
+<!--Dwarf-->
+    <string name="dwarf">
+        <b>ASI:</b> +2 Constitution
+        \n<b>Size:</b> Medium
+        \n<b>Speed:</b> 25 feet. Your speed is not reduced by wearing heavy armor
+        \n<b>Darkvision:</b> You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can\'t discern color in darkness, only shades of gray
+        \n<b>Dwarven Resilience:</b> You have advantage on saving throws against being poisoned, and you have resistance against poison damage
+        \n<b>Dwarven Combat Training:</b> You have proficiency with the battleaxe, handaxe, light hammer, and warhammer
+        \n<b>Tool Proficiency:</b> You gain proficiency with one of smith\'s tools, brewer\'s supplies, or mason\'s tools
+        \n<b>Stonecunning:</b> Whenever you make a History check related to the origin of stonework, you are considered proficient in the History skill and add double your proficiency bonus to the check, instead of your normal proficiency bonus
+        \n<b>Languages:</b> You can speak, read, and write Common and Dwarvish
+    </string>
+    <string name="hill_dwarf">
+        <b>ASI:</b> +1 Wisdom
+        \n<b>Dwarven Toughness:</b> Your hit point maximum increases by 1, and it increases by 1 every time you gain a level.
     </string>
 </resources>

@@ -16,15 +16,16 @@
         <LinearLayout android:layout_width="match_parent"
                       android:layout_height="wrap_content"
                       android:orientation="vertical">
-            <EditText
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="textPersonName"
-                    android:text="@string/character_name"
-                    android:ems="10"
-                    tools:layout_editor_absoluteY="0dp"
-                    tools:layout_editor_absoluteX="0dp"
-                    android:id="@+id/characterName"/>
+            <!--<EditText-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:inputType="textPersonName"-->
+                    <!--android:hint="@string/character_name"-->
+                    <!--android:ems="10"-->
+                    <!--tools:layout_editor_absoluteY="0dp"-->
+                    <!--tools:layout_editor_absoluteX="0dp"-->
+                    <!--android:id="@+id/characterName"-->
+                    <!--android:autofillHints="@string/character_name"/>-->
 
             <LinearLayout android:layout_width="match_parent"
                           android:layout_height="wrap_content"
@@ -38,7 +39,7 @@
                 <View
                         android:layout_width="0dp"
                         android:layout_height="0dp"
-                        android:layout_weight="1" />
+                        android:layout_weight="1"/>
                 <ImageButton
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -50,43 +51,88 @@
             <Spinner
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/chosenRace"
+                    android:id="@+id/chosen_race"
                     android:entries="@array/races_array"/>
 
-        <LinearLayout android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:orientation="horizontal">
-            <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical"
-                    android:padding="5dp"
-                    android:text="@string/character_subrace"/>
-            <View
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="1" />
-            <ImageButton
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:srcCompat="@android:drawable/ic_menu_info_details"
-                    android:id="@+id/subrace_description_imageButton"
-                    android:contentDescription="@string/race_benefits"/>
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:orientation="horizontal">
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:padding="5dp"
+                        android:text="@string/character_subrace"/>
+                <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"/>
+                <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@android:drawable/ic_menu_info_details"
+                        android:id="@+id/subrace_description_imageButton"
+                        android:contentDescription="@string/race_benefits"/>
 
-        </LinearLayout>
+            </LinearLayout>
+
             <Spinner
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/chosen_subrace"/>
-            <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:text="@string/character_background"/>
+
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:orientation="horizontal">
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:padding="5dp"
+                        android:text="@string/character_background"/>
+                <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"/>
+                <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@android:drawable/ic_menu_info_details"
+                        android:id="@+id/background_description_imageButton"
+                        android:contentDescription="@string/race_benefits"/>
+            </LinearLayout>
+
             <Spinner
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/chosen_background"/>
+
+            <LinearLayout android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:orientation="horizontal">
+                <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:padding="5dp"
+                        android:text="@string/character_class"/>
+                <View
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"/>
+                <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:srcCompat="@android:drawable/ic_menu_info_details"
+                        android:id="@+id/class_description_imageButton"
+                        android:contentDescription="@string/race_benefits"/>
+            </LinearLayout>
+
+            <Spinner
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/chosen_class"
+                    android:entries="@array/class_array"/>
         </LinearLayout>
 
     </ScrollView>
