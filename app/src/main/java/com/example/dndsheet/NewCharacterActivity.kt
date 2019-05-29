@@ -1,5 +1,6 @@
 package com.example.dndsheet
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.FloatingActionButton
 import android.support.design.widget.Snackbar
@@ -125,11 +126,13 @@ class NewCharacterActivity : AppCompatActivity(), NavigationView.OnNavigationIte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         // Handle navigation view item clicks here.
         when (item.itemId) {
-            R.id.nav_home -> {
-                // Handle the camera action
+            R.id.nav_saved_characters -> {
+                val intent = Intent(this, SavedCharactersActivity::class.java)
+                startActivity(intent)
             }
-            R.id.nav_gallery -> {
-
+            R.id.nav_new -> {
+                val intent = Intent(this, NewCharacterActivity::class.java)
+                startActivity(intent)
             }
             R.id.nav_slideshow -> {
 
