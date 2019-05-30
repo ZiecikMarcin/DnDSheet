@@ -129,10 +129,12 @@ class NewCharacterActivity : AppCompatActivity(), NavigationView.OnNavigationIte
             R.id.nav_saved_characters -> {
                 val intent = Intent(this, SavedCharactersActivity::class.java)
                 startActivity(intent)
+                finish()
             }
             R.id.nav_new -> {
                 val intent = Intent(this, NewCharacterActivity::class.java)
                 startActivity(intent)
+                finish()
             }
             R.id.nav_slideshow -> {
 

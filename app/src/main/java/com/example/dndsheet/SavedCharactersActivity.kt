@@ -41,10 +41,7 @@ class SavedCharactersActivity : AppCompatActivity(), NavigationView.OnNavigation
 
         listView = findViewById(R.id.listView)
         var characterList = mutableListOf<Model>()
-        characterList.add(Model("Cacao Decomoreno","Sorcerer lvl 5", R.mipmap.ic_launcher))
-        characterList.add(Model("Cacao Decomoreno","Sorcerer lvl 5", R.mipmap.ic_launcher))
-        characterList.add(Model("Cacao Decomoreno","Sorcerer lvl 5", R.mipmap.ic_launcher))
-        characterList.add(Model("Cacao Decomoreno","Sorcerer lvl 5", R.mipmap.ic_launcher))
+        characterList.add(Model("Title","Dummy", R.mipmap.ic_launcher))
         listView.adapter = CharacterAdapter(this, R.layout.character_list_item, characterList)
 
 
@@ -90,10 +87,12 @@ class SavedCharactersActivity : AppCompatActivity(), NavigationView.OnNavigation
             R.id.nav_saved_characters -> {
                 val intent = Intent(this, SavedCharactersActivity::class.java)
                 startActivity(intent)
+                finish()
             }
             R.id.nav_new -> {
                 val intent = Intent(this, NewCharacterActivity::class.java)
                 startActivity(intent)
+                finish()
             }
             R.id.nav_slideshow -> {
 
